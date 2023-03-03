@@ -105,9 +105,12 @@ if __name__ == '__main__':
     app.run(debug=True)
 
 #--------------------------- Example of getting a quote with id of 3 ---------------------------#
-quote_id = 3 # You can change this id to whatever quote id you want
-response = requests.get(url=f"http://localhost:5000/random-quotes/{quote_id}")
-response.raise_for_status()
-data = response.json()
-print(data)
-
+#--------------------------- Run this code below in a different Python IDE window ---------------------------#
+# import requests
+# quote_id = 3 # You can change this id to whatever quote id you want
+# url = f"http://localhost:5000/random-quotes/{quote_id}"
+# response = requests.get(url=url)
+# response.raise_for_status()
+# data = response.json()
+# print(data)
+# print(url)
