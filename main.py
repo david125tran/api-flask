@@ -14,17 +14,17 @@ import random
 #--------------------------- Quotes ---------------------------#
 random_quotes = [
     {
-        "id": 0,
+        "id": 1,
         "author": "Seneca",
         "quote": "He who boasts of his ancestry is praising the deeds of another."
     },
     {
-        "id": 1,
+        "id": 2,
         "author": "Charles M. Schulz",
         "quote": "That's the secret to life... replace one worry with another..."
     },
     {
-        "id": 2,
+        "id": 3,
         "author": "Francois de La Rochefoucauld",
         "quote": "The pleasure of love is in loving."
     }
