@@ -14,6 +14,8 @@ import random
 #--------------------------- Quotes ---------------------------#
 random_quotes = [
     {
+        # Quote id start at 1 and not 0.  id of 0 is reserved for returning a random quote.
+
         "id": 1,
         "author": "Seneca",
         "quote": "He who boasts of his ancestry is praising the deeds of another."
@@ -101,4 +103,11 @@ api.add_resource(Quote, "/", "/random-quotes", "/random-quotes/", "/random-quote
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+#--------------------------- Example of getting a quote with id of 3 ---------------------------#
+quote_id = 3 # You can change this id to whatever quote id you want
+response = requests.get(url=f"http://localhost:5000/random-quotes/{quote_id}")
+response.raise_for_status()
+data = response.json()
+print(data)
 
