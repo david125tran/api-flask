@@ -9,7 +9,8 @@ Run this in a Python IDE such as PyCharm In terminal type this to install flask-
 
 1) http://localhost:5000/
 2) http://localhost:5000/random-quotes/
-3) http://localhost:5000/random-quotes/
+3) http://localhost:5000/random-quotes
 
 ******************Get specific quote******************
-1) https://localhost:5000/random-quotes/int:id
+1) https://localhost:5000/random-quotes/<int:id>
+Replace <int:id> with integer 1 to 3 to return quotes 1, 2, or 3
