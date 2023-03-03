@@ -14,6 +14,8 @@ import random
 #--------------------------- Quotes ---------------------------#
 random_quotes = [
     {
+        # Quote id start at 1 and not 0.  id of 0 is reserved for returning a random quote.
+
         "id": 1,
         "author": "Seneca",
         "quote": "He who boasts of his ancestry is praising the deeds of another."
