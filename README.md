@@ -7,9 +7,9 @@ Run this in a Python IDE such as PyCharm In terminal type this to install flask-
 
 ******************Get random quote******************
 
-http://localhost:5000/
-http://localhost:5000/random-quotes/
-http://localhost:5000/random-quotes/
+1) http://localhost:5000/
+2) http://localhost:5000/random-quotes/
+3) http://localhost:5000/random-quotes/
 
 ******************Get specific quote******************
-https://localhost:5000/random-quotes/int:id
+1) https://localhost:5000/random-quotes/int:id
