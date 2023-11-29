@@ -98,7 +98,7 @@ app = Flask(__name__)
 api = Api(app)
 
 #--------------------------- Add the resource to our API ---------------------------#
-api.add_resource(Quote, "/", "/random-quotes", "/random-quotes/", "/random-quotes/<int:id>")
+api.add_resource(Quote, "/", "/<int:id>", "/random-quotes", "/random-quotes/", "/random-quotes/<int:id>")
 
 if __name__ == '__main__':
     app.run(debug=True)
