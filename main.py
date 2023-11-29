@@ -32,9 +32,8 @@ random_quotes = [
     }
 ]
 
-#--------------------------- GET ---------------------------#
-
 class Quote(Resource):
+    #--------------------------- GET ---------------------------#
     def get(self, id=0):
         if id == 0:   # If an id was not specified, the GET method returns a random quote
             return random.choice(random_quotes), 200
@@ -44,54 +43,54 @@ class Quote(Resource):
                     return quote, 200
         return "Quote not found", 404   # If an id was specified and not found, the GET method returns a 400 error code
 
-#--------------------------- POST ---------------------------#
+    #--------------------------- POST ---------------------------#
 
-def post(self, id):   # POST adds to a resource
-    parser = reqparse.RequestParser()
-    parser.add_argument("author")
-    parser.add_argument("quote")
-    params = parser.parse_args()
+    def post(self, id):   # POST adds to a resource
+        parser = reqparse.RequestParser()
+        parser.add_argument("author")
+        parser.add_argument("quote")
+        params = parser.parse_args()
+    
+        for quote in random_quotes: # If an id was specified and the id already exists, the POST method returns a 400 error code
+            if id == quote["id"]:
+                return f"Quote with id {id} already exists", 400
+    
+        quote = {
+            "id": int(id),
+            "author": params["author"],
+            "quote": params["quote"]
+        }
+    
+        random_quotes.append(quote) # If an id was specified and the id doesn't exist yet, the POST method creates the request successfully
+        return quote, 201
 
-    for quote in random_quotes: # If an id was specified and the id already exists, the POST method returns a 400 error code
-        if id == quote["id"]:
-            return f"Quote with id {id} already exists", 400
+    #--------------------------- PUT ---------------------------#
+    def put(self, id):   # PUT replaces a resource or adds to a resource
+        parser = reqparse.RequestParser
+        parser.add_argument("author")
+        parser.add_argument("quote")
+        params = parser.parse_args()
+    
+        for quote in random_quotes:   # If the id already exists, the quote is replaced
+            if id == quote["id"]:
+                quote["author"] = params["author"]
+                quote["quote"] = params["quote"]
+                return quote, 200
+    
+        quote = {   # If the id does not exist yet, the quote is added
+            "id": id,
+            "author": params["author"],
+            "quote": params["quote"]
+        }
+    
+        random_quotes.append(quote)
+        return quote, 201
 
-    quote = {
-        "id": int(id),
-        "author": params["author"],
-        "quote": params["quote"]
-    }
-
-    random_quotes.append(quote) # If an id was specified and the id doesn't exist yet, the POST method creates the request successfully
-    return quote, 201
-
-#--------------------------- PUT ---------------------------#
-def put(self, id):   # PUT replaces a resource or adds to a resource
-    parser = reqparse.RequestParser
-    parser.add_argument("author")
-    parser.add_argument("quote")
-    params = parser.parse_args()
-
-    for quote in random_quotes:   # If the id already exists, the quote is replaced
-        if id == quote["id"]:
-            quote["author"] = params["author"]
-            quote["quote"] = params["quote"]
-            return quote, 200
-
-    quote = {   # If the id does not exist yet, the quote is added
-        "id": id,
-        "author": params["author"],
-        "quote": params["quote"]
-    }
-
-    random_quotes.append(quote)
-    return quote, 201
-
-#--------------------------- DELETE ---------------------------#
-def delete(self, id):
-    global random_quotes
-    random_quotes = [quote for quote in random_quotes if quote["id"] != id]
-    return f"Quote with id {id} is deleted.", 200
+    #--------------------------- DELETE ---------------------------#
+    def delete(self, id):
+        global random_quotes
+        random_quotes = [quote for quote in random_quotes if quote["id"] != id]
+        return f"Quote with id {id} is deleted.", 200
 
 
 
